@@ -74,6 +74,31 @@ main.cpp:
 \end{algorithmic} 
 \end{algorithm}
 
+\begin{algorithm}[htb] 
+   \caption{ insert } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+   \Require
+   队员的编号
+   \State 初始化结点，结点的编号为队员的编号
+   \State 结点的后驱指向head的后驱
+   \State head的后驱指向结点
+   \end{algorithmic} 
+   \end{algorithm}
+
+   \begin{algorithm}[htb] 
+\caption{ delete\_node } 
+\label{alg:Framwork} 
+\begin{algorithmic}[1]
+\Require
+前驱结点pre
+\Ensure
+删除结点的后驱
+\State pre的后驱设置为要删除结点的后驱
+\State 释放原pre的后驱
+\end{algorithmic} 
+\end{algorithm}
+
 
 \section{调试分析报告}
    在代码编写过程中，笔者曾经遇到过使用delete\_node函数删除过头指针的情况。
