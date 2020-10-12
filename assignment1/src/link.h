@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-06 22:11:25
  * @LastEditors: CYKS
- * @LastEditTime: 2020-10-11 21:02:53
+ * @LastEditTime: 2020-10-12 21:09:01
  */
 #include <iostream>
 
@@ -28,7 +28,12 @@ class Link{
 			head->next = head;
 		}
 		
-		// 在链表中插入一个数据为data的元素
+		/**
+		 * @name: insert
+		 * @description:  在链表中插入一个数据为data的元素
+		 * @param {int} data  插入队员的编号
+		 * @return {void} 
+		 */  
 		void insert(int data) {
 			node* cur = new node();
 			cur->data = data;
@@ -36,7 +41,12 @@ class Link{
 			head->next = cur;			
 		}
 
-		
+		/**
+		 * @name: 
+		 * @description: 
+		 * @param {type} 
+		 * @return {type} 
+		 */
 		node* delete_node(node* pre) {
 			node* temp = pre->next;
 			pre->next = temp->next;
