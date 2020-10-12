@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-06 22:11:25
  * @LastEditors: CYKS
- * @LastEditTime: 2020-10-12 21:40:46
+ * @LastEditTime: 2020-10-12 22:47:03
  */
 #include <iostream>
 
@@ -92,7 +92,7 @@ class Link{
 			int result = head->next->data;
 			delete_node(head);
 			if(flag) return result;
-			else return ((n + result - 2) % n) + 1;
+			else return ((n + 1 - result) % n) + 1;
 		}
 };
 
