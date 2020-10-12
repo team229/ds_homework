@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-06 22:11:25
  * @LastEditors: CYKS
- * @LastEditTime: 2020-10-12 21:09:01
+ * @LastEditTime: 2020-10-12 21:40:46
  */
 #include <iostream>
 
@@ -42,10 +42,10 @@ class Link{
 		}
 
 		/**
-		 * @name: 
-		 * @description: 
-		 * @param {type} 
-		 * @return {type} 
+		 * @name: delete_node
+		 * @description:  删除当前结点的下一个结点
+		 * @param {node*}  pre 当前节点
+		 * @return {node*}  返回被删除结点的下一个节点
 		 */
 		node* delete_node(node* pre) {
 			node* temp = pre->next;
@@ -54,6 +54,12 @@ class Link{
 			return pre->next;
 		}
 
+		/**
+		 * @name: print
+		 * @description: 输出调试信息
+		 * @param {void} 
+		 * @return {void} 
+		 */  
 		void print() {
 			for(node* cur = head->next; cur != head; cur = cur->next) {
 				std::cout << cur->data << " ";
@@ -61,6 +67,14 @@ class Link{
 			std::cout << std::endl;
 		}
 
+		/**
+		 * @name: solve
+		 * @description: 解决一次约瑟夫问题 
+		 * @param {int} n 队员的总数 
+		 * @param {int} y 数数的间隔
+		 * @param {bool} flag  开关，控制返回的结果是否变换到加里森编号为 1 的情况
+		 * @return {int} 返回问题的答案
+		 */  
 		int solve(int n, int y, bool flag) {
 			for(int i = n ; i >= 1; i--) insert(i);
 			int cnt;
