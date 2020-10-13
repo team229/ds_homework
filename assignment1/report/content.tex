@@ -34,6 +34,7 @@ $1 \leqslant n \leqslant  N_{max}$ 与 $1 \leqslant y \leqslant  Y_{max}$的三�
 \section{概要设计}
 在link.h中定义链表数据结构:
 \begin{enumerate}
+   \item 每一个link对象都保存一个head指针，指向链表的表头。
    \item solve函数为链表对象唯一对外可以操作的函数，返回特定$n$，$y$下的$x$;
    \item delete\_node函数删去链表结点的下一个结点;
    \item insert使用头插插入一个新的结点;
@@ -136,7 +137,7 @@ main.cpp:
 
    用户可以使用IDE或者手动编译源代码Joseph.cpp，获得可执行文件。
    
-   笔者使用的gcc版本为gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)。
+   笔者使用的gcc版本为8.1.0
    运行可执行文件后，按照规定的格式输入数值。
    程序返回的结果会重定向到当前文件夹下的output.out.
 
