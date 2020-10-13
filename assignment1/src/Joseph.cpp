@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-06 21:27:01
  * @LastEditors: CYKS
- * @LastEditTime: 2020-10-12 23:42:15
+ * @LastEditTime: 2020-10-13 19:19:20
  */
 #include <iostream>
 #include <algorithm>
@@ -20,6 +20,8 @@ int main(int argc, char* argv[])
 	#ifdef TEST
 		freopen("test.in", "r", stdin);
 	#endif
+	// 输入N和Y的上界
+	cout <<  "输入N和Y的上界" << endl;
 	cin >> N_max >> Y_max;
 	freopen("output.out", "w", stdout);
     Link* link = new Link();

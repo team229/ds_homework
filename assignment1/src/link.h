@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-06 22:11:25
  * @LastEditors: CYKS
- * @LastEditTime: 2020-10-12 22:47:03
+ * @LastEditTime: 2020-10-13 19:18:23
  */
 #include <iostream>
 
@@ -14,12 +14,15 @@
 
 struct node
 {
+	// data 队员的编号
+	// next 链表元素的后驱
 	int data;
 	node* next;
 };
 
 class Link{
 	private:
+		// 链表的表头
 		node* head;
 	public:
 		// 构造函数：构造头指针并且初始化为单循环链表
