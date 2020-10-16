@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 #ifndef _LINK_H
 
 #define _LINK_H
@@ -41,7 +43,7 @@ public:
     void Push(char c)
     {
         if (stk->top == (MaxSize - 1))
-            printf("Stack is Full!");
+            cout<<"Stack is Full!";
         else
         {
             stk->top++;
@@ -58,7 +60,7 @@ public:
     void Pop()
     {
         if (stk->top == -1)
-            printf("There is no element.");
+            cout<<"There is no element.";
         else
         {
             stk->top--;
@@ -75,9 +77,9 @@ public:
     {
         for (int i = stk->top; i >= 0; i--)
         {
-            printf("%c", stk->s[i]);
+           cout<<stk->s[i];
         }
-        printf("\n");
+        cout<<endl;
         stk->top = -1;
     }
 
@@ -113,19 +115,19 @@ public:
 /**
  * @name: ReadBinary 
  * @description: 从文件读取二进制串，并存入栈中
- * @param {Stack*} binary 
+ * @param {Stack*} binary ,{FILE*}fp
  * @return {int} 
  */
-int ReadBinary(Stack *binary)
+int ReadBinary(Stack *binary,FILE *fp)
 {
     char c;
-    scanf("%c", &c);
+    c=fgetc(fp);
+    if(c=='\n') c=fgetc(fp);
     while (c != '#')
     {
-        if (c == '\n')
-            return 0;
         binary->Push(c);
-        scanf("%c", &c);
+        c=fgetc(fp);
+        if(c=='\n') c=fgetc(fp);
     }
     return 1;
 }

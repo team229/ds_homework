@@ -10,6 +10,9 @@ using namespace std;
 
 int main()
 {
+    freopen("out.txt","w",stdout);
+    FILE* fp=fopen("in.txt","r");
+
     //建立2进制栈
     Stack *binary = new Stack();
 
@@ -17,9 +20,11 @@ int main()
     Stack *octal = new Stack();
 
     //循环读入二进制串，并输出
-    while (ReadBinary(binary))
+    while (!feof(fp))
+    {
+        ReadBinary(binary,fp);
         WriteOctal(binary, octal);
-
+    }
     delete binary;
     delete octal;
 }
