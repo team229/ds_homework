@@ -3,8 +3,8 @@
  * @version: 1.0.0
  * @Author: CYKS
  * @Date: 2020-10-16 15:11:29
- * @LastEditors: CYKS
- * @LastEditTime: 2020-10-16 16:39:23
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-10-16 17:33:28
  */
 /*
 Stack
@@ -19,25 +19,6 @@ using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
-    freopen("out.txt","w",stdout);
-    FILE* fp=fopen("in.txt","r");
-
-    //建立2进制栈
-    Stack *binary = new Stack();
-
-    //建立8进制数栈
-    Stack *octal = new Stack();
-
-    //循环读入二进制串，并输出
-    while (!feof(fp))
-    {
-        ReadBinary(binary,fp);
-        WriteOctal(binary, octal);
-    }
-    delete binary;
-    delete octal;
-=======
     int input_mode = 0;
     //cout << "选择输入模式(0表示交互式输入,1表示文件输入)" << endl;
     cin >> input_mode;
@@ -53,5 +34,4 @@ int main()
         solution->writeOctal();
 
     delete solution;
->>>>>>> 23336eb65787307deeb1dc99ad7c6be726b280f4
 }
