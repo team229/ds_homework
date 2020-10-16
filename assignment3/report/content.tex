@@ -1,0 +1,101 @@
+\section{需求分析}
+
+本程序要完成的功能为，判断字符串是否为回文字符串。
+输入要求是一串字符串，并且要以\#结束。
+例如，
+avava\#。
+如果有必要，可以读入多个字符串串。
+ava\#abaaba\#。
+我们对输入做出以下限制:
+\begin{enumerate}
+   \item 输入的串的总长度不能超过$10^6$
+   \item 输入的所有字符只能在[0~9][a~z][A~Z]中\#
+\end{enumerate}
+
+
+在正常情况下，本程序输出T或F判断正误。在有多个字符串输入的情况下，
+判断结果将按顺序输出。
+以上面两个输入样例为例。
+
+
+
+\section{概要设计}
+   问题解决的思路概述；说明程序中用到的所有数据结构类型的定义，主程序的流程以及各程序模块之间的层次（调用）关系。
+   
+   
+   主程序，即在main函数中调用输入和创建初始化数据结构的函数，进行数据处理，最后输出
+   结果。
+
+
+   我们需要定义一下数据结构
+   \begin{enumerate}
+      \item 队列，只需要支持队列的基本操作
+      \item 栈，只需要支持栈的基本操作
+      \item 处理数据的solution
+   \end{enumerate}
+
+
+   对于读入非\#字符，main会调用Solution中的insert函数插入数据。
+   每当读入一个\#的时候，main中就会调用Solution中check函数判断之前读入的串是否为回文串。
+
+\section{详细设计}
+
+   先分别定义队列和栈数据结构
+
+
+   队列中含有的元素为:
+   \begin{enumerate}
+      \item 头指针,head
+      \item 尾指针,tail
+      \item 插入insert
+      \item 弹出数据pop\_tail
+      \item 获取数据get\_head
+   \end{enumerate}
+
+
+   同样有栈的定义如下
+   \begin{enumerate}
+      \item 栈顶指针top
+      \item 取得栈顶的数据get\_top
+      \item 弹出栈顶的数据pop\_top
+   \end{enumerate}
+
+\begin{algorithm}[htb] 
+   \caption{ Solution结构定义 } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+      \Require 输入串
+      \Ensure 判断串是否回文
+      
+      \State 插入数据函数
+      \Function {insert}{a}
+         \If {a 不合法}
+            \State \Return FAILURE
+         \EndIf
+         \State 将a添加到栈中
+         \State 将a添加到队列中
+         \State \Return SUCCESS
+      \EndFunction \\
+
+      \State 检查是否为回文串函数
+      \Function {check}{void}
+         \While{栈和队列非空}
+            \State 从栈中取出一个元素stack\_data
+            \State 从队列中取出一个元素queue\_data
+            \If{$stack\_dat \neq queue\_data$}
+               \State \Return FAILURE
+            \EndIf
+            \State 从栈和队列中弹出数据
+         \EndWhile
+         \State \Return SUCCESS
+      \EndFunction
+   \end{algorithmic} 
+   \end{algorithm}
+
+\section{调试分析报告}
+
+\section{用户使用说明}
+
+\section{测试结果}
+
+
