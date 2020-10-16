@@ -1,10 +1,10 @@
+#ifndef _STACK_H
+#define _STACK_H
+
 #include <iostream>
+#include"vector.h"
 
-#ifndef _LINK_H
-
-#define _LINK_H
-
-//64位系统
+//初始长度
 #define MaxSize 64
 
 using namespace std;
@@ -15,12 +15,13 @@ class Stack
         //top为栈顶指针
         //s为栈空间
         int top;
-        int s[MaxSize];
+        Vector* vct;
 
     public:
     
         Stack() {
             top = -1;
+            vct=new Vector(MaxSize);
         }
 
         /**
@@ -40,7 +41,7 @@ class Stack
          * @return {int} 返回栈顶元素
          */    
         int get_top(){
-            return s[top];
+            return vct->back();
         }
 
         /**
@@ -50,7 +51,8 @@ class Stack
          * @return {void} 
          */    
         void push(int data) {
-            s[++top] = data;
+            top++;
+            vct->push_back(data);
         }
 
         /**
@@ -61,6 +63,7 @@ class Stack
          */    
         void pop(){
             top--;
+            vct->pop();
         }
 };
 
