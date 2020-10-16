@@ -21,7 +21,7 @@ class Vector{
          * @name: empty 
          * @description: 判断动态数组是否为空
          * @param {type} 
-         * @return {type} 
+         * @return {int} 
          */
         int empty(){
             return size==0;
@@ -47,11 +47,15 @@ class Vector{
             return max_size;
         }
 
+        int get_value(int n){
+            return a[n];
+        }
+
         /**
          * @name: resize
-         * @description:  
+         * @description: 动态数组的重分配内存  
          * @param {type} 
-         * @return {type} 
+         * @return {void} 
          */
         void resize(){
             int *b=new int[max_size];
@@ -62,19 +66,57 @@ class Vector{
                 a[i]=b[i];
             max_size*=1.6;
         }
+
+        /**
+         * @name: push_back
+         * @description: 尾删除元素
+         * @param {int} num 
+         * @return {void} 
+         */
         void push_back(int num){
             if(size>=max_size)
                 resize();
             a[size++]=num;
         }
+
+        /**
+         * @name: back 
+         * @description: 得到尾部数据
+         * @param {type} 
+         * @return {int} 
+         */
         int back(){
             return a[size-1];
         }
+
+        /**
+         * @name: pop
+         * @description: 尾删除
+         * @param {type} 
+         * @return {int} 
+         */
         int pop(){
             if(size==0)
                 return -1;
             return a[size--];
         }
+
+        int pop_head(){
+            if(size==0)
+                return -1;
+            int temp=a[0];
+            for(int i=0;i<size;i++)
+                a[i]=a[i+1];
+            size--;
+            return temp;
+        }
+
+        /**
+         * @name: print 
+         * @description: 输出动态数组元素
+         * @param {type} 
+         * @return {void} 
+         */
         void print(){
             for(int i=0;i<size;i++)
                 cout<<a[i]<<" ";

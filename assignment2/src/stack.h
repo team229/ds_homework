@@ -3,17 +3,17 @@
 
 #include <iostream>
 #include"vector.h"
+using namespace std;
 
 //初始长度
 #define MaxSize 64
 
-using namespace std;
 
 class Stack
 {
     private:
         //top为栈顶指针
-        //s为栈空间
+        //vct为栈空间
         int top;
         Vector* vct;
 
