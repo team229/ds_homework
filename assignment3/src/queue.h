@@ -19,18 +19,46 @@ class Queue{
             front=rear=-1;
             vct=new Vector(BeginSize);
         }
+
+        /**
+         * @name: empty 
+         * @description: 判断是否为空 
+         * @param {type} 
+         * @return {bool} 
+         */
         bool empty(){
             return rear==-1;
         }
+
+        /**
+         * @name: size
+         * @description: 返回队列长度 
+         * @param {type} 
+         * @return {int} 
+         */
         int size(){
             return rear-front;
         }   
+
+        /**
+         * @name: push
+         * @description: 尾插元素
+         * @param {int} data 
+         * @return {void} 
+         */
         void push(int data){
             rear++;
             if(empty())
                 front++;
             vct->push_back(data);
         }
+
+        /**
+         * @name: pop
+         * @description: 删除队头指针
+         * @param {type} 
+         * @return {int} 
+         */
         int pop(){
             if(empty())
                 return -1;
@@ -38,6 +66,13 @@ class Queue{
                 front--;
             return vct->pop_head();
         }
+
+        /**
+         * @name: print
+         * @description: 输出队列元素
+         * @param {type} 
+         * @return {void} 
+         */
         void print(){
             vct->print();
         }
