@@ -6,7 +6,7 @@
 using namespace std;
 
 //初始长度64
-#define BeginSize 64
+#define BSize 64
 
 class Stack
 {
@@ -20,7 +20,7 @@ class Stack
     
         Stack() {
             top = -1;
-            vct=new Vector(BeginSize);
+            vct=new Vector(BSize);
         }
 
         /**
@@ -31,6 +31,12 @@ class Stack
          */    
         bool empty(){
             return top == -1;
+        }
+
+        void clear(){
+            top=-1;
+            delete vct;
+            vct= new Vector(BSize);
         }
 
         /**

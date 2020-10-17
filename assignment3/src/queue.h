@@ -30,6 +30,12 @@ class Queue{
             return rear==-1;
         }
 
+        void clear(){
+            front=rear=-1;
+            delete vct;
+            vct=new Vector(BeginSize);
+        }
+
         /**
          * @name: size
          * @description: 返回队列长度 
@@ -41,15 +47,27 @@ class Queue{
         }   
 
         /**
+         * @name: get_front
+         * @description: 得到队头的值
+         * @param {type} 
+         * @return {int} 
+         */
+        int get_front(){
+            //debug:   cout<<front<<endl;
+            return vct->get_value(front);
+        }
+
+        /**
          * @name: push
          * @description: 尾插元素
          * @param {int} data 
          * @return {void} 
          */
         void push(int data){
-            rear++;
-            if(empty())
+            //debug:  cout<<front<<" "<<rear<<endl;
+            if(rear==-1)
                 front++;
+            rear++;
             vct->push_back(data);
         }
 
@@ -62,8 +80,9 @@ class Queue{
         int pop(){
             if(empty())
                 return -1;
-            if(front==1)
+            if(rear==0)
                 front--;
+            rear--;
             return vct->pop_head();
         }
 
@@ -87,8 +106,10 @@ int main(){
         qe->push(i);
     qe->pop();
     qe->pop();
+    cout<<qe->get_front()<<endl;
     qe->print();
 }
+
 */
 
 #endif

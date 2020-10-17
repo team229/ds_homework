@@ -47,8 +47,17 @@ class Vector{
             return max_size;
         }
 
+        /**
+         * @name: get_value
+         * @description: 得到位置n处的取值
+         * @param {int}  n
+         * @return {int} 
+         */
         int get_value(int n){
-            return a[n];
+            if(n<=size)
+                return a[n];
+            else
+                return 0;
         }
 
         /**
