@@ -123,7 +123,12 @@ public:
                 c = getchar();
                 continue;
             }
-            binary->push(c - '0');
+            if (c != '0' && c != '1') {
+                cout << "Wrong Input: " << c << endl;   
+            }
+            else {
+                binary->push(c - '0');
+            }
             c = getchar();
         }
         return 1;

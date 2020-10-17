@@ -20,8 +20,43 @@
 
 
 \section{概要设计}
+   main创建并初始化Solution结构，并且循环调用Solution中的读入和输出。
+
+
+   Solution中保存了两个栈，一个用于放置二进制串，一个用于放置八进制串。
+   栈中实现了push,pop,get\_top等栈的基本功能。
+   Solution结构可以调用readBinary进行读入，调用writeOctal写入。
+   再在Solution中实现一个可以将二进制数转化为八进制的中间函数。
 
 \section{详细设计}
+
+\begin{algorithm}[htb] 
+   \caption{ Solution结构定义 } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+      \Require 输入二进制串
+      \Ensure 输出八进制串
+      
+      \State 读入二进制串
+      \Function {readBinary}{void}
+         \State 读入字符a
+         \While {a不是\#也不是EOF}
+            \If {}
+            \EndIf
+         \EndWhile
+      \EndFunction \\
+
+      \State 输出八进制串
+      \Function {writeOctal}{void}
+         
+      \EndFunction
+
+      
+      \Function {check}{void}
+         
+      \EndFunction
+   \end{algorithmic} 
+\end{algorithm}
 
 \section{调试分析报告}
 
