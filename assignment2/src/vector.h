@@ -10,11 +10,15 @@ class Vector{
         int *a;
         int size;
         int max_size;
+        int cost;
+        double k;
     public:
         Vector(int n){
             a=new int[n];
             size=0;
             max_size=n;
+            cost = 0;
+            k = 2.0;
         }
 
         /**
@@ -57,10 +61,11 @@ class Vector{
             int *b=new int[max_size];
             for(int i=0;i<max_size;i++)
                 b[i]=a[i];
-            a=new int[int(1.6*max_size)];
+            cost += max_size;
+            a=new int[int(k*max_size)];
             for(int i=0;i<max_size;i++)
                 a[i]=b[i];
-            max_size*=1.6;
+            max_size*=k;
         }
 
         /**
@@ -106,6 +111,10 @@ class Vector{
         void print(){
             for(int i=0;i<size;i++)
                 cout<<a[i]<<" ";
+        }
+
+        int get_cost() {
+            return cost + max_size;
         }
 };
 

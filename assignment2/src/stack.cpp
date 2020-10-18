@@ -3,8 +3,8 @@
  * @version: 1.0.0
  * @Author: CYKS
  * @Date: 2020-10-16 15:11:29
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-16 20:10:09
+ * @LastEditors: CYKS
+ * @LastEditTime: 2020-10-18 11:58:21
  */
 /*
 Stack
@@ -20,7 +20,7 @@ using namespace std;
 int main()
 {
     int input_mode = 0;
-    //cout << "选择输入模式(0表示交互式输入,1表示文件输入)" << endl;
+    cout << "choose prefered mode, 0 for interactive, 1 for file input(input.in)" << endl;
     cin >> input_mode;
     if(input_mode == 1) {
         //文件模式
@@ -32,6 +32,6 @@ int main()
     //循环读入二进制串，并输出
     while (solution->readBinary())
         solution->writeOctal();
-
+    //solution->print_cost();
     delete solution;
 }

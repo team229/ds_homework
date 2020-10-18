@@ -65,6 +65,10 @@ class Stack
             top--;
             vct->pop();
         }
+
+        int get_cost() {
+            return vct->get_cost();
+        }
 };
 
 class Solution
@@ -134,7 +138,8 @@ public:
             }
             c = getchar();
         }
-        return 1;
+        if(c == EOF) return 0;
+        else return 1;
     }
     
     /**
@@ -153,6 +158,10 @@ public:
             octal->push(c);
         }
         print(octal);
+    }
+
+    void print_cost() {
+        cout << binary->get_cost() << endl;
     }
 };
 
