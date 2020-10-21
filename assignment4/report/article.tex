@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsmath,latexsym}
+\usepackage{hyperref}
+\usepackage[nofonts]{ctexcap}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{fix-cm}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\newcommand{\bigsize}{\fontsize{20pt}{18pt}\selectfont}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+\setCJKmainfont[BoldFont=STFangsong]{STFangsong}
+% Page length commands go here in the preamble
+\setlength{\oddsidemargin}{-0.25in} % Left margin of 1 in + 0 in = 1 in
+\setlength{\textwidth}{7in}   % Right margin of 8.5 in - 1 in - 6.5 in = 1 in
+\setlength{\topmargin}{-.75in}  % Top margin of 2 in -0.75 in = 1 in
+\setlength{\textheight}{9.2in}  % Lower margin of 11 in - 9 in - 1 in = 1 in
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\renewcommand{\baselinestretch}{1.5} % 1.5 denotes double spacing. Changing it will change the spacing
+
+\setlength{\parindent}{0in}
+\begin{document}
+\CTEXsetup[format={\Large\bfseries}]{section}
+\CTEXsetup[number={\chinese{section}}]{section}
+
+\input{front}
+
+\pagestyle{plain}
+\newpage
+
+\input{content}
+\end{document}
