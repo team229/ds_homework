@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 1.0.0
+ * @Author: CYKS
+ * @Date: 2020-10-21 19:15:26
+ * @LastEditors: CYKS
+ * @LastEditTime: 2020-10-26 22:02:42
+ */
 #include<iostream>
 #include"matrix.h"
 
@@ -10,6 +18,7 @@ class Solution{
     private:
         Matrix *x,*y;
         Matrix result;
+        int operate_code;
     public:
         void readMatrix(){
             int m,n,size,i,j,num;
@@ -22,6 +31,8 @@ class Solution{
                 cin>>i>>j>>num;
                 x->insert(i,j,num);
             }
+            x->tuple_sort();
+
             //初始化矩阵B
             cout<<"Input the Matrix B:\n"<<"rows,cols,size:\n";;
             cin>>m>>n>>size;
@@ -31,24 +42,24 @@ class Solution{
                 cin>>i>>j>>num;
                 y->insert(i,j,num);
             }
+            y->tuple_sort();
         }
 
-        void Operate(){
-            int operate_code;
+        void operate(){
             cout<<"Please input the operator_code:\n";
             cout<<"\'1 for * and 0 for +\'\n";
             cin>>operate_code;
             if(!operate_code){
                 cout<<"The result of Adding is:\n";
-                result=x->operator+(*y);
+                result= (*x) + (*y);
             }
             else{
                 cout<<"The result of Multiply is:\n";
-                result=x->operator*(*y);
+                result= (*x) * (*y);
             }
         }
 
-        void PrintMatrix(){
+        void printMatrix(){
             result.printMatrix();
         }
 };

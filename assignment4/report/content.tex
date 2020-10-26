@@ -66,7 +66,71 @@
    \end{enumerate}
 
 \section{详细设计}
-   
+\begin{algorithm}[htb] 
+   \caption{ Solution结构定义 } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+      \State 读入需要被操作的矩阵
+      \Function {readMatrix}{void}
+         \State 初始化矩阵A
+         \State 读入m,n,size
+         \For {$1 \to size$}
+            \State 读入三元组，并插入到矩阵A中
+         \EndFor
+
+         \State 初始化矩阵B
+         \State 读入$m$,$n$,$size$
+         \For {$1 \to size$}
+            \State 读入三元组，并插入到矩阵B中
+         \EndFor
+      \EndFunction
+      \State 读入运算类型并得出运算结果
+      \Function{operate}{void}
+         \State 从用户处读入运算类型，保存在op中
+         \If {$op = 0$}
+            \State   result = X + Y
+         \Else
+            \State   result = X * Y
+         \EndIf
+      \EndFunction
+      \State 打印运算结果
+      \Function{printMatrix}{void}
+         \State 输出Result矩阵
+      \EndFunction
+
+   \end{algorithmic} 
+\end{algorithm}
+
+
+
+\begin{algorithm}[htb] 
+   \caption{ Solution结构定义 } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+      \State 将一个三元组插入到矩阵中
+      \Function {insert}{Tuple node}
+         \State 检查Matrix是否超限
+         \For{Matrix所有的三元组}
+            \If{第i个三元组与node在同一个位置}
+               \State 将node的数值加到当前三元组数值上
+            \EndIf
+         \EndFor
+         \If{Matrix中没有该三元组}
+            \State 在三元组尾部插入node
+         \EndIf
+      \EndFunction
+      \State 将当前矩阵与矩阵X相加，返回结果
+      \Function{operator +}{Matrix X}
+         \State 检查是否符合相加的条件
+         
+      \EndFunction
+      \State 将当前矩阵右乘矩阵X，返回结果
+      \Function{printMatrix}{Matrix X}
+         \State 输出Result矩阵
+      \EndFunction
+
+   \end{algorithmic} 
+\end{algorithm}
 
 \section{调试分析报告}
 
