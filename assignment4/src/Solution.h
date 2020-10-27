@@ -3,8 +3,8 @@
  * @version: 1.0.0
  * @Author: CYKS
  * @Date: 2020-10-21 19:15:26
- * @LastEditors: CYKS
- * @LastEditTime: 2020-10-26 22:02:42
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-10-27 20:35:12
  */
 #include<iostream>
 #include"matrix.h"
@@ -20,6 +20,13 @@ class Solution{
         Matrix result;
         int operate_code;
     public:
+
+        /**
+         * @name: readMatrix 
+         * @description: 读取A，B矩阵的三元组表
+         * @param {*}
+         * @return {void}
+         */
         void readMatrix(){
             int m,n,size,i,j,num;
             //初始化矩阵A
@@ -45,6 +52,12 @@ class Solution{
             y->tuple_sort();
         }
 
+        /**
+         * @name: operate 
+         * @description: 
+         * @param {*}
+         * @return {void}
+         */
         void operate(){
             cout<<"Please input the operator_code:\n";
             cout<<"\'1 for * and 0 for +\'\n";
@@ -59,6 +72,12 @@ class Solution{
             }
         }
 
+        /**
+         * @name: printMatrix 
+         * @description: 
+         * @param {*}
+         * @return {void}
+         */
         void printMatrix(){
             result.printMatrix();
         }
