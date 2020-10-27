@@ -22,12 +22,24 @@ class Vector{
         int cost;
         int k;
     public:
+        Vector(){
+            a=new Status[100];
+            size=0;
+            max_size=100;
+            cost = 0;
+            k=2;
+        }
+
         Vector(int n){
             a=new Status[n];
             size=0;
             max_size=n;
             cost = 0;
             k=2;
+        }
+
+        Status* begin() {
+            return a;
         }
 
         /**
@@ -60,13 +72,17 @@ class Vector{
             return max_size;
         }
 
+        Status& operator [] (int n) {
+            return get_value(n);
+        }
+
         /**
          * @name: get_value
          * @description: 得到位置n处的取值
          * @param {int}  n
          * @return {int} 
          */
-        Status get_value(int n){
+        Status& get_value(int n){
             if(n<=size)
                 return a[n];
             else
@@ -123,16 +139,6 @@ class Vector{
                 cout<<"There is no element.";
             else
                 return a[size--];
-        }
-
-        Status pop_head(){
-            if(size==0)
-                return ;
-            Status temp=a[0];
-            for(int i=0;i<size;i++)
-                a[i]=a[i+1];
-            size--;
-            return temp;
         }
 
         int get_cost() {

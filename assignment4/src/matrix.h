@@ -3,8 +3,8 @@
  * @version: 1.0.0
  * @Author: CYKS
  * @Date: 2020-10-21 19:15:33
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-27 12:43:05
+ * @LastEditors: CYKS
+ * @LastEditTime: 2020-10-27 19:41:16
  */
 #include <iostream>
 #include <algorithm>
@@ -17,13 +17,13 @@
 using namespace std;
 
 // 判断x三元组的位置是否小于y
-bool tuple_greater(const Tuple &x, const Tuple &y) {
+bool tuple_greater(Tuple &x, Tuple &y) {
 	if(x.i != y.i) return x.i < y.i;
 	else return x.j < y.j;
 }
 
 // 判断三元组x是否与y相等
-bool tuple_equal(const Tuple &x, const Tuple &y){
+bool tuple_equal(Tuple &x, Tuple &y){
 	return x.i == y.i && x.j == y.j;
 }
 
@@ -32,12 +32,13 @@ class Matrix
 	private:
 		//m,n表示矩阵的行与列数，p表示稀疏矩阵中非零结点的个数
 		int m,n,size,max_size;
-		Tuple *tp;
+		Vector tp;
 		
 
 	public:
 		Matrix(){
 			m=n=size=max_size=0;
+			tp = Vector(100);
 		}
 
 
@@ -46,7 +47,7 @@ class Matrix
 			n=cols;
 			max_size=sum;
 			size=-1;
-			tp=new Tuple[sum];
+			tp = Vector(100);
 		}
 
 		void insert(Tuple node) {
@@ -95,14 +96,14 @@ class Matrix
 		}
 
 		void tuple_sort() {
-			sort(tp, tp+size, tuple_greater);
+			sort(tp.begin(), tp.begin()+size, tuple_greater);
 		}
 
 		int get_size(){
 			return size;
 		}
 
-		Matrix operator + (const Matrix &x) {
+		Matrix operator + (Matrix &x) {
 			Matrix result;
 			if(x.m!=m || x.n!=n){
 				result=Matrix(0,0,0);
@@ -135,7 +136,7 @@ class Matrix
 			return result;	
 		}	
 
-		Matrix operator * (const Matrix &x) {
+		Matrix operator * (Matrix &x) {
 			Matrix result;
 			if(n!=x.m){
 				result=Matrix(0,0,0);

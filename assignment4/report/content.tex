@@ -65,6 +65,8 @@
       \item 释放内存
    \end{enumerate}
 
+\newpage
+
 \section{详细设计}
 \begin{algorithm}[htb] 
    \caption{ Solution结构定义 } 
@@ -101,10 +103,10 @@
    \end{algorithmic} 
 \end{algorithm}
 
-
+\newpage
 
 \begin{algorithm}[htb] 
-   \caption{ Solution结构定义 } 
+   \caption{ Matrix结构定义 } 
    \label{alg:Framwork} 
    \begin{algorithmic}[1]
       \State 将一个三元组插入到矩阵中
@@ -119,12 +121,6 @@
             \State 在三元组尾部插入node
          \EndIf
       \EndFunction
-      \State 将当前矩阵与矩阵X相加，返回结果
-      \Function{operator +}{Matrix X}
-         \State 检查是否符合相加的条件
-         
-      \EndFunction
-      \State 将当前矩阵右乘矩阵X，返回结果
       \Function{printMatrix}{Matrix X}
          \State 输出Result矩阵
       \EndFunction
@@ -132,7 +128,88 @@
    \end{algorithmic} 
 \end{algorithm}
 
+\newpage
+
+\begin{algorithm}[htb] 
+   \caption{ Matrix结构定义 } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+      \State 将当前矩阵与矩阵X相加，返回结果
+      \Function{operator +}{Matrix X}
+         \State 检查是否符合相加的条件
+         \State 初始化result矩阵，保存计算结果
+         \State 将log1指向左矩阵的头，log2指向右矩阵的头
+         \While{log1没有达到尾部||log2没有达到尾部}
+            \If{log1达到了尾部}
+               \State 将log2指向的元素加入result并递增log2
+            \EndIf
+            \If{log2达到了尾部}
+               \State 将log1指向的元素加入result并递增log1
+            \EndIf
+            \If{log1指向的三元组与log2指向的三元组位置相同}
+               \State 将两个三元组相加后加入到result，同时递增两个指针
+            \EndIf
+            \If{log1指向的三元组在log2前面}
+               \State 将log1指向的元素加入result并递增log1
+            \Else
+               \State 将log2指向的元素加入result并递增log2
+            \EndIf
+         \EndWhile
+      \EndFunction
+
+   \end{algorithmic} 
+\end{algorithm}
+
+\newpage
+
+\begin{algorithm}[htb] 
+   \caption{ Matrix结构定义 } 
+   \label{alg:Framwork} 
+   \begin{algorithmic}[1]
+      \State 将当前矩阵右乘矩阵X，返回结果
+      \Function{operator *}{Matrix X}
+         \State 判断两矩阵是否可以相乘
+         \State 将cur指向左矩阵的开头
+         \State 初始化矩阵result保存结果
+         \For{$i = 1 \to n$}
+            \State 递增$cur$直到$cur \leq i$
+            \For{$j = 1 \to m$}
+               \State 初始化temp三元组，保存乘法的结果
+               \For{$index = cur$其中index小于边界且index处三元组的行等于i}
+                  \For{$index\_x = 1 to size$}
+                     \If{三元组index\_x可以与三元组index相乘}
+                        \State 将三元组index\_x与三元组index相乘，结果加入到temp中
+                     \EndIf
+                  \EndFor
+               \EndFor
+               \If{判断temp结果非0}
+                  \State 将temp插入到result中
+               \EndIf
+            \EndFor
+         \EndFor
+               
+      \EndFunction
+
+   \end{algorithmic} 
+\end{algorithm}
+
+\newpage
+
 \section{调试分析报告}
+
+   在本次实验中我们继续沿用之前设计的Vector类。
+   因为我们对矩阵相乘后的结果矩阵的大小未知，同时为了节省内存，避免开出 n*m大小的矩阵。
+   如果这样我们使用稀疏矩阵将会毫无意义。
+
+
+   同时我们对计算过程做了优化，在插入AB矩阵的所有数据后，我们会对AB矩阵中的三元组进行排序。
+   排序顺序表现为矩阵中个个元素的位置从前往后，即先比较行后比较列。
+
+
+   在经过这些优化后，我们得到的加法算法的复杂度为$O(size_A + size_B)$。
+
+
+   乘法则较为复杂,优化后，$cur$指针每次递增次数的期望为$\sqrt{size_A}$，$N$与$M$表示结果矩阵的列数与行数乘法复杂度为$O(NM*\sqrt{size_A}*size_B)$
 
 \section{用户使用说明}
 输入说明：
@@ -174,123 +251,78 @@ Sample 1:
 
    Input:
 
-   3 4 2
+   3 4 2\\
+   2 1 21\\
+   3 4 34\\
+   3 4 3\\
+   1 2 12\\
+   2 1 21\\
+   3 2 32\\
+   1\\
 
-   2 1 21
 
-   3 4 34
-
-   3 4 3
-
-   1 2 12
-
-   2 1 21
-
-   3 2 32
-
-   1
-
-   Output:
-
+   Output:\\
    B Matrix can't multiply to A.
+
 
 Sample 2:
 
-   Input:
-
-   2 3 3
-
-   1 1 11
-
-   1 3 13
-
-   2 2 22
-
-   3 2 3
-
-   1 1 66
-
-   2 3 88
-
-   3 3 33
-
+   Input:\\
+   2 3 3\\
+   1 1 11\\
+   1 3 13\\
+   2 2 22\\
+   3 2 3\\
+   1 1 66\\
+   2 3 88\\
+   3 3 33\\
    0
 
-   Output:
 
+   Output:\\
    B Matrix can't add to A.
+
 
 Sample 3:
 
-   Input:
-
-   2 2 2
-
-   1 1 11
-
-   2 2 22
-
-   2 2 2
-
-   1 2 12
-
-   2 1 21
-
+   Input:\\
+   2 2 2\\
+   1 1 11\\
+   2 2 22\\
+   2 2 2\\
+   1 2 12\\
+   2 1 21\\
    1
+
 
    Output:
 
    2 2 4
-
-   1 1 11
-
-   1 2 12
-
-   2 1 21
-
-   2 2 22
+   1 1 11\\
+   1 2 12\\
+   2 1 21\\
+   2 2 22\\
 
 Sample 4:
 
    Input:
-
-   3 3 5
-
-   1 1 11
-
-   1 3 13
-
-   2 2 22
-
-   3 2 32
-
-   3 3 33
-
-   3 3 3
-
-   1 1 66
-
-   2 3 88
-
-   3 3 33
-
+   3 3 5\\
+   1 1 11\\
+   1 3 13\\
+   2 2 22\\
+   3 2 32\\
+   3 3 33\\
+   3 3 3\\
+   1 1 66\\
+   2 3 88\\
+   3 3 33\\
    0
 
-   Output:
 
-   1 1 77
-
-   1 3 13
-
-   2 2 22
-
-   2 3 88
-
-   3 2 32
-
+   Output:\\
+   1 1 77\\
+   1 3 13\\
+   2 2 22\\
+   2 3 88\\
+   3 2 32\\
    3 3 66
-
-
-
-
-
