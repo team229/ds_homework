@@ -3,24 +3,18 @@
  * @version: 1.0.0
  * @Author: CYKS
  * @Date: 2020-10-21 19:15:33
- * @LastEditors: CYKS
- * @LastEditTime: 2020-10-26 21:58:24
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-10-27 12:43:05
  */
 #include <iostream>
 #include <algorithm>
+#include "vector.h"
 
 #ifndef	MATRIX_H_
 
 #define MATRIX_H_
 
 using namespace std;
-
-struct Tuple{
-	//i,j为非零结点的横标，纵标
-	int i,j;
-	//num为结点的数据域
-	int num;
-};
 
 // 判断x三元组的位置是否小于y
 bool tuple_greater(const Tuple &x, const Tuple &y) {
