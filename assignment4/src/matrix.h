@@ -3,8 +3,8 @@
  * @version: 1.0.0
  * @Author: CYKS
  * @Date: 2020-10-21 19:15:33
- * @LastEditors: CYKS
- * @LastEditTime: 2020-10-27 19:41:16
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-10-27 22:20:37
  */
 #include <iostream>
 #include <algorithm>
@@ -34,14 +34,18 @@ class Matrix
 		int m,n,size,max_size;
 		Vector tp;
 		
-
 	public:
 		Matrix(){
 			m=n=size=max_size=0;
 			tp = Vector(100);
 		}
 
-
+		/**
+   		* @name: Matrix 
+   		* @description: 初始化类
+   		* @param {int}rows,{int}cols,{int}sum
+   		* @return {*}
+   		*/
 		Matrix(int rows,int cols,int sum){
 			m=rows;
 			n=cols;
@@ -50,6 +54,12 @@ class Matrix
 			tp = Vector(100);
 		}
 
+		/**
+   		* @name: insert
+   		* @description:向三元组表中插入三元组 
+   		* @param {Tuple} node
+   		* @return {*}
+   		*/	
 		void insert(Tuple node) {
 			int i;
 			// 尺寸超限时报错　
@@ -69,6 +79,13 @@ class Matrix
 			}
 		}
 
+
+		/**
+   		* @name: insert_direct
+   		* @description: 向三元组表插入三元组节点
+   		* @param {Tuple}node
+   		* @return {void}
+  		*/
 		void insert_direct(Tuple node) {
 			if(size >= max_size)
 				printf("Insertion failed!");
@@ -78,6 +95,12 @@ class Matrix
 			tp[size].num=node.num;
 		}
 
+		/**
+   		* @name: insert_direct
+   		* @description: 向三元组表插入三元组节点的内容
+  		* @param {int}i,{int}j,{int}num
+  		* @return {void}
+ 		*/
 		void insert_direct(int i, int j, int num) {
 			Tuple temp;
 			temp.i = i;
@@ -86,7 +109,12 @@ class Matrix
 			insert_direct(temp);
 		}
 
-
+		/**
+  		* @name: insert
+ 		* @description: 插入前 
+ 		* @param {int}i,{int}j,{int}num
+   		* @return {void}
+   		*/
 		void insert(int i,int j,int num) {
 			Tuple temp;
 			temp.i = i;
@@ -95,14 +123,32 @@ class Matrix
 			insert(temp);
 		}
 
+		/**
+  		* @name: tuple_sort
+ 		* @description: 排序三元组表
+  		* @param {*}
+		* @return {*}
+ 		*/  
 		void tuple_sort() {
 			sort(tp.begin(), tp.begin()+size, tuple_greater);
 		}
 
+		/**
+   		* @name: get_size
+   		* @description: 得到三元组表的大小
+   		* @param {*}
+   		* @return {int}
+   		*/
 		int get_size(){
 			return size;
 		}
 
+		/**
+   		* @name: operator +
+   		* @description: 矩阵进行+运算
+   		* @param {Matrix&}x
+   		* @return {Matrix}
+   		*/
 		Matrix operator + (Matrix &x) {
 			Matrix result;
 			if(x.m!=m || x.n!=n){
@@ -136,6 +182,12 @@ class Matrix
 			return result;	
 		}	
 
+		/**
+ 		* @name: operator *
+   		* @description: 矩阵进行*运算
+   		* @param {Matrix&}x
+   		* @return {Matrix}
+   		*/
 		Matrix operator * (Matrix &x) {
 			Matrix result;
 			if(n!=x.m){
@@ -170,7 +222,14 @@ class Matrix
 			return result;	
 		}
 		
+		/**
+   		* @name: printMatrix
+   		* @description: 输出矩阵的三元组表
+   		* @param {*}
+   		* @return {void}
+   		*/
 		void printMatrix(){
+			cout<<m<<" "<<n<<""<<size<<endl;
 			for(int i=0;i<=size;i++){
 				cout<< "(" << tp[i].i<<" "<<tp[i].j<<" "<<tp[i].num<< ")" << endl;
 			}
