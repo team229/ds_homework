@@ -141,6 +141,13 @@ class Vector{
                 return a[size--];
         }
 
+
+        /**
+         * @name: get_cost
+         * @description: 得到叠加花费的空间
+         * @param {*}
+         * @return {int}
+         */
         int get_cost() {
             return cost;
         }

@@ -3,7 +3,7 @@
  * @version: 1.0
  * @Author: Gypsophlia
  * @Date: 2020-11-25 22:27:03
- * @LastEditTime: 2020-11-26 14:27:10
+ * @LastEditTime: 2020-11-26 14:34:58
  */
 #include<iostream>
 #include<algorithm>
@@ -24,7 +24,11 @@ typedef struct HuffmanTree
         s=b;
         fre=c;
     }
-};
+    HuffmanTree(int a,int c){
+        flag=a;
+        fre=c;
+    }
+}node;
 
 typedef pair<string,int> PAIR;
 bool Cmpbyfre(PAIR lhs,PAIR rhs){
@@ -84,7 +88,7 @@ class Solution
                 temp=new HuffmanTree(0,node1->fre+node2->fre);
                 temp->ld=node1;
                 temp->rd=node2;
-                if(!node.empty())
+                if(!nodes.empty())
                     nodes.push(temp);
             }
             root=temp;

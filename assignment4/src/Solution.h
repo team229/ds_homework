@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-21 19:15:26
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-27 20:35:12
+ * @LastEditTime: 2020-10-27 23:00:32
  */
 #include<iostream>
 #include"matrix.h"
@@ -36,7 +36,7 @@ class Solution{
             cout<<"i,j,num:\n";
             for(int s=0;s<size;s++){
                 cin>>i>>j>>num;
-                x->insert(i,j,num);
+                x->insert_direct(i,j,num);
             }
             x->tuple_sort();
 
@@ -47,7 +47,7 @@ class Solution{
             cout<<"i,j,num:\n";
             for(int s=0;s<size;s++){
                 cin>>i>>j>>num;
-                y->insert(i,j,num);
+                y->insert_direct(i,j,num);
             }
             y->tuple_sort();
         }
@@ -63,12 +63,12 @@ class Solution{
             cout<<"\'1 for * and 0 for +\'\n";
             cin>>operate_code;
             if(!operate_code){
-                cout<<"The result of Adding is:\n";
                 result= (*x) + (*y);
+                cout<<"The result of Adding is:\n";
             }
             else{
-                cout<<"The result of Multiply is:\n";
                 result= (*x) * (*y);
+                cout<<"The result of Multiply is:\n";
             }
         }
 

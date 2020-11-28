@@ -4,7 +4,7 @@
  * @Author: CYKS
  * @Date: 2020-10-21 19:15:33
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-27 22:20:37
+ * @LastEditTime: 2020-11-22 14:05:16
  */
 #include <iostream>
 #include <algorithm>
@@ -31,13 +31,13 @@ class Matrix
 {
 	private:
 		//m,n表示矩阵的行与列数，p表示稀疏矩阵中非零结点的个数
-		int m,n,size,max_size;
+		int m,n,size;
 		Vector tp;
 		
 	public:
 		Matrix(){
-			m=n=size=max_size=0;
-			tp = Vector(100);
+			m=n=size=0;
+			tp = Vector();
 		}
 
 		/**
@@ -49,36 +49,9 @@ class Matrix
 		Matrix(int rows,int cols,int sum){
 			m=rows;
 			n=cols;
-			max_size=sum;
 			size=-1;
-			tp = Vector(100);
+			tp = Vector(sum);
 		}
-
-		/**
-   		* @name: insert
-   		* @description:向三元组表中插入三元组 
-   		* @param {Tuple} node
-   		* @return {*}
-   		*/	
-		void insert(Tuple node) {
-			int i;
-			// 尺寸超限时报错　
-			if(size>=max_size)
-				printf("Insertion failed!");
-			for(i = 0; i <= size; i++) {
-				if(tp[i].i == node.i && tp[i].j == node.j) {
-					tp[i].num += node.num;
-					break;
-				}
-			}
-			if(i > size) {
-				size++;
-				tp[size].i=node.i;
-				tp[size].j=node.j;
-				tp[size].num=node.num;
-			}
-		}
-
 
 		/**
    		* @name: insert_direct
@@ -87,40 +60,23 @@ class Matrix
    		* @return {void}
   		*/
 		void insert_direct(Tuple node) {
-			if(size >= max_size)
-				printf("Insertion failed!");
 			size++;
-			tp[size].i=node.i;
-			tp[size].j=node.j;
-			tp[size].num=node.num;
+			tp.push_back(node);
 		}
 
 		/**
-   		* @name: insert_direct
+   		* @name: insert_direct(重载)
    		* @description: 向三元组表插入三元组节点的内容
   		* @param {int}i,{int}j,{int}num
   		* @return {void}
  		*/
 		void insert_direct(int i, int j, int num) {
+			size++;
 			Tuple temp;
 			temp.i = i;
 			temp.j = j;
 			temp.num = num;
-			insert_direct(temp);
-		}
-
-		/**
-  		* @name: insert
- 		* @description: 插入前 
- 		* @param {int}i,{int}j,{int}num
-   		* @return {void}
-   		*/
-		void insert(int i,int j,int num) {
-			Tuple temp;
-			temp.i = i;
-			temp.j = j;
-			temp.num = num;
-			insert(temp);
+			tp.push_back(temp);
 		}
 
 		/**
@@ -161,9 +117,9 @@ class Matrix
 				int log1=0,log2=0;
 				while(log1<=size||log2<=x.size){
 					if (log1 > size){
-						result.insert_direct(x.tp[log2]);	
+						result.insert_direct(x.tp[log2++]);	
 					} else if(log2 > x.size) {
-						result.insert_direct(tp[log1]);
+						result.insert_direct(tp[log1++]);
 					} else if(tuple_equal(tp[log1], x.tp[log2])){
 						result.insert_direct(tp[log1].i,tp[log1].j,tp[log1].num+x.tp[log2].num);
 						log1++;
@@ -195,7 +151,7 @@ class Matrix
 				cout<<"The couple of Matrixes can't multiple to each other!\n";
 			}
 			else{
-				result=Matrix(m,x.n,m*x.m);
+				result=Matrix(m,x.n,size+x.size);
 				int cur = 0;
 				// 枚举行
 				for(int i = 1; i <= m; i++) {
@@ -229,7 +185,7 @@ class Matrix
    		* @return {void}
    		*/
 		void printMatrix(){
-			cout<<m<<" "<<n<<""<<size<<endl;
+			cout<<m<<" "<<n<<" "<<size<<endl;
 			for(int i=0;i<=size;i++){
 				cout<< "(" << tp[i].i<<" "<<tp[i].j<<" "<<tp[i].num<< ")" << endl;
 			}

@@ -3,8 +3,11 @@
  * @version: 1.0
  * @Author: Gypsophlia
  * @Date: 2020-11-22 14:03:27
- * @LastEditTime: 2020-11-22 18:27:46
+ * @LastEditTime: 2020-11-28 10:32:20
  */
+#ifndef _TREE_H_
+#define _TREE_H_
+
 #include<iostream>
 #include<cstring>
 using namespace std;
@@ -80,3 +83,5 @@ class Solution
             }
         }   
 };
+
+#endif
