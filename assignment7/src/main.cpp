@@ -3,7 +3,7 @@
  * @version: 1.0
  * @Author: Gypsophlia
  * @Date: 2020-12-05 13:16:38
- * @LastEditTime: 2020-12-05 13:18:58
+ * @LastEditTime: 2020-12-05 15:49:57
  */
 /*
  * @Descripttion: 
@@ -25,10 +25,7 @@ int main(){
     Graph* tu = new Graph(ver_num,edge_num);
     tu->create_graph();
 
-    cout << "Input the couple vertex to solve the longest path:" << endl;
-    cin >> m >> n;
-    longest=tu->longest_path(m,n);
-    cout << "The longest distance from m to n is:" << longest << endl;
-    tu->print_longest_path(m,n);
+    tu->longest_path();
+    tu->print_longest_path();
     //tu->print_graph();
 }
