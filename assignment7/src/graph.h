@@ -3,7 +3,7 @@
  * @version: 1.0
  * @Author: Gypsophlia
  * @Date: 2020-12-04 17:08:01
- * @LastEditTime: 2020-12-06 14:01:56
+ * @LastEditTime: 2020-12-06 14:10:11
  */
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
@@ -55,14 +55,12 @@ class Graph
          * @return {void}
          */
         void create_graph(){
-            cout << "Input the vertexes:" << endl;;
             for(int i=0;i<ver_num;i++){
                 node temp;
                 temp.firstAdj=NULL;
                 temp.indegree=0;
                 temp.longest=0;
                 temp.father=-1;
-                cin >> temp.data;
                 vertex.push_back(temp);
             }
             cout << "Input the edges from i to j with weight:" <<endl;
