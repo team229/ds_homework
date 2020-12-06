@@ -37,7 +37,7 @@
 \section{详细设计}
 
 \begin{algorithm}[htb] 
-   \caption{ Matrix结构定义 } 
+   \caption{ inputTree } 
    \label{alg:Framwork} 
    \begin{algorithmic}[1]
       \Function {inputTree}{void}
@@ -53,7 +53,7 @@
 \end{algorithm}
 
 \begin{algorithm}[htb] 
-   \caption{ Matrix结构定义 } 
+   \caption{ buildTree } 
    \label{alg:Framwork} 
    \begin{algorithmic}[1]
       
@@ -73,8 +73,10 @@
    \end{algorithmic} 
 \end{algorithm}
 
+\newpage
+
 \begin{algorithm}[htb] 
-   \caption{ Matrix结构定义 } 
+   \caption{ printTree } 
    \label{alg:Framwork} 
    \begin{algorithmic}[1]
       \Function {printTree}{root}
@@ -99,5 +101,24 @@
    buildTree函数调用的次数n次，所以我们认为代码的复杂度为$O(n)$
 
 \section{用户使用说明}
+用户可以使用IDE或者手动编译源代码stack.cpp，获得可执行文件。
+
+笔者使用的gcc版本为8.1.0
+
+用户执行程序时，可以输入0表示交互式输入，1表示文件输入，一行表示一次输入
+文件输入时，输入内容要存储在in.txt中，输出到out.txt中。
 
 \section{测试结果}
+
+输入样例abc**d**e**，输出为
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/样例1.png}
+	\caption{样例}
+\end{figure}
+同时作为非法样例，还有a****
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/样例2.png}
+	\caption{非法样例}
+\end{figure}
