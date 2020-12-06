@@ -3,14 +3,7 @@
  * @version: 1.0
  * @Author: Gypsophlia
  * @Date: 2020-12-05 13:16:38
- * @LastEditTime: 2020-12-05 15:49:57
- */
-/*
- * @Descripttion: 
- * @version: 1.0
- * @Author: Gypsophlia
- * @Date: 2020-12-04 17:08:01
- * @LastEditTime: 2020-12-05 13:16:01
+ * @LastEditTime: 2020-12-06 14:02:04
  */
 #include<iostream>
 #include"graph.h"
